@@ -1,0 +1,413 @@
+{
+  "Destructuring Export": {
+    "prefix": "export",
+    "body": [
+      "export { default } from '${1}'"
+    ],
+    "description": ""
+  },
+  "Create Array From": {
+    "prefix": "arrayfrom",
+    "body": [
+      "Array.from(new Array(${1}), (val, index) => (${2}))"
+    ]
+  },
+  "React Danger": {
+    "prefix": "danger",
+    "body": [
+      "dangerouslySetInnerHTML={{ __html: ${1} }}"
+    ]
+  },
+  "Create React Class": {
+    "prefix": "rcc",
+    "body": [
+      "import * as React from 'react''",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import styles from './styles.css'",
+      "",
+      "class ${1} extends React.Component {",
+      "    render() {",
+      "        const {",
+      "            className,",
+      "            children,",
+      "            ...other",
+      "        } = this.props",
+      "",
+      "        return (",
+      "            <${3:div}",
+      "                className={classnames(styles.${2:root}, className)}",
+      "                {...other}",
+      "            >",
+      "                {children}",
+      "            </${3:div}>",
+      "        )",
+      "    }",
+      "}",
+      "",
+      "${1}.propTypes = {",
+      "    children: PropTypes.node,",
+      "    classes: PropTypes.object,",
+      "    className: PropTypes.string,",
+      "}",
+      "",
+      "export default ${1}",
+      ""
+    ],
+    "description": ""
+  },
+  "Create React Class JSS": {
+    "prefix": "rccJSS",
+    "body": [
+      "import * as React from 'react''",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import withStyles from '@material-ui/core/styles/withStyles'",
+      "",
+      "export const styles = theme => ({",
+      "    root: {",
+      "",
+      "    },",
+      "})",
+      "",
+      "class ${1} extends React.Component {",
+      "    render() {",
+      "        const {",
+      "            children,",
+      "            classes,",
+      "            className,",
+      "            ...other",
+      "        } = this.props",
+      "",
+      "        return (",
+      "            <${2:div}",
+      "                className={classnames(classes.root, className)}",
+      "                {...other}",
+      "            >",
+      "                {children}",
+      "            </${2:div}>",
+      "        )",
+      "    }",
+      "}",
+      "",
+      "${1}.propTypes = {",
+      "    children: PropTypes.node,",
+      "    classes: PropTypes.object,",
+      "    className: PropTypes.string,",
+      "}",
+      "",
+      "export default withStyles(styles)(${1})",
+      ""
+    ],
+    "description": ""
+  },
+  "Create React Stateless": {
+    "prefix": "rfc",
+    "body": [
+      "import * as React from 'react''",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import styles from './styles.css'",
+      "",
+      "const ${1} = React.forwardRef(function ${1}(props, ref) {",
+      "  const { className, children, ...other } = props",
+      "  return (",
+      "    <${3:div}",
+      "      className={classnames(styles.${2:root}, className)}",
+      "      {...other}",
+      "    >",
+      "      {children}",
+      "    </${3:div}>",
+      "  )",
+      "})",
+      "",
+      "${1}.propTypes = {",
+      "    children: PropTypes.node,",
+      "    classes: PropTypes.object,",
+      "    className: PropTypes.string,",
+      "}",
+      "",
+      "export default ${1}",
+      ""
+    ],
+    "description": ""
+  },
+  "Create React Stateless JSS": {
+    "prefix": "rfcJSS",
+    "body": [
+      "import * as React from 'react''",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import withStyles from '@material-ui/core/styles/withStyles'",
+      "",
+      "export const styles = theme => ({",
+      "  root: {},",
+      "})",
+      "",
+      "const ${1} = React.forwardRef(function ${1}(props, ref) {",
+      "  const { children, classes, className, ...other } = props",
+      "  return (",
+      "    <div",
+      "      className={classnames(classes.root, className)}",
+      "      {...other}",
+      "    >",
+      "      {children}",
+      "    </div>",
+      "  )",
+      "})",
+      "",
+      "${1}.propTypes = {",
+      "  children: PropTypes.node,",
+      "  classes: PropTypes.object,",
+      "  className: PropTypes.string,",
+      "}",
+      "",
+      "export default withStyles(styles)(${1})",
+      ""
+    ],
+    "description": ""
+  },
+  "Create React Stateless CSS Modules": {
+    "prefix": "rfcssModules",
+    "body": [
+      "import * as React from 'react''",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import styles from './${1}.module.css'",
+      "",
+      "const ${1} = React.forwardRef(function ${1}(props, ref) {",
+      "  const { children, className, ...other } = props",
+      "  return (",
+      "    <div",
+      "      className={classnames(styles.root, className)}",
+      "      {...other}",
+      "    >",
+      "      {children}",
+      "    </div>",
+      "  )",
+      "})",
+      "",
+      "${1}.propTypes = {",
+      "    children: PropTypes.node,",
+      "    classes: PropTypes.object,",
+      "    className: PropTypes.string,",
+      "}",
+      "",
+      "export default ${1}",
+      ""
+    ],
+    "description": ""
+  },
+  "Create React Story": {
+    "prefix": "reactStory",
+    "body": [
+      "import * as React from 'react'",
+      "import { storiesOf } from '@storybook/react'",
+      "import { text, boolean } from '@storybook/addon-knobs'",
+      "import ${1:Button} from './'",
+      "",
+      "const stories = storiesOf('Components/${1:Button}', module)",
+      "",
+      "export const Default = () => (",
+      "    <${1:Button}",
+      "        disabled={boolean('disabled', false)}",
+      "    >",
+      "        {text('children', 'Just a ${1:Button}')}",
+      "    </${1:Button}>",
+      ")",
+      "",
+      "stories.add('Default', Default)",
+      "",
+      "export default Default",
+      ""
+    ],
+    "description": ""
+  },
+  "JS IIFE function": {
+    "prefix": "iife",
+    "body": [
+      "((${1:window, document, undefined}) => {",
+      "${0:${VISUAL}}",
+      "}(${2:win, doc}))"
+    ],
+    "description": ""
+  },
+  "JS map()": {
+    "prefix": "map",
+    "body": [
+      "${1:iterable}.map(${2:item} =>",
+      "\t${0},",
+      ")"
+    ],
+    "description": ""
+  },
+  "JS filter()": {
+    "prefix": "filter",
+    "body": [
+      "${1:iterable}.filter((${2:item}) => {",
+      "  ${0}",
+      "})"
+    ],
+    "description": ""
+  },
+  "JS reducer()": {
+    "prefix": "reducer",
+    "body": [
+      "${1:iterable}.reduce((${2:curr}, ${3:val}) => {",
+      "\t${0}",
+      "}${4:, initial})"
+    ],
+    "description": ""
+  },
+  "JS find()": {
+    "prefix": "find",
+    "body": [
+      "${1:iterable}.find((${2:item}) => {",
+      "\t${0}",
+      "})",
+      ""
+    ],
+    "description": ""
+  },
+  "Async Function": {
+    "prefix": "async",
+    "body": [
+      "async function $1($2) {",
+      "  $0",
+      "}"
+    ],
+    "description": ""
+  },
+  "JS Console": {
+    "prefix": "cln",
+    "body": [
+      "console.log(${1:'here'})$0"
+    ],
+    "description": ""
+  },
+  "JS Log": {
+    "prefix": "clog",
+    "body": [
+      "console.log('$1', $1)$0"
+    ],
+    "description": ""
+  },
+  "JS Object Log": {
+    "prefix": "objlog",
+    "body": [
+      "console.log({$1})$0"
+    ],
+    "description": ""
+  },
+  "Prettify Log": {
+    "prefix": "pretty",
+    "body": [
+      "console.log(JSON.stringify({$1}, null, 2))"
+    ],
+    "description": ""
+  },
+  "Spaced Log": {
+    "prefix": "slog",
+    "body": [
+      "console.log('**************************************************************************\\\\\\\\n\\\\\\\\n\\\\\\\\n')",
+      "console.log($0)",
+      "console.log('\\\\\\\\n\\\\\\\\n\\\\\\\\n**************************************************************************')",
+      ""
+    ],
+    "description": ""
+  },
+  "Console Time": {
+    "prefix": "cti",
+    "body": [
+      "console.time(${1})",
+      "${0:${VISUAL}}",
+      "console.timeEnd($1)"
+    ],
+    "description": ""
+  },
+  "Throw log": {
+    "prefix": "tl",
+    "body": [
+      "throw new Error(JSON.stringify({$0}, null, 2))"
+    ],
+    "description": ""
+  },
+  "Ternary OP": {
+    "prefix": "ternary",
+    "body": [
+      "${1:cond} ? ${2:true} : ${3: false}"
+    ],
+    "description": ""
+  },
+  "React useEffect": {
+    "prefix": "useEffect",
+    "body": [
+      "React.useEffect(() => {",
+      "\t${1}",
+      "\treturn () => {}",
+      "}, [${2}]);${0}"
+    ],
+    "description": ""
+  },
+  "React useContext": {
+    "prefix": "useContext",
+    "body": [
+      "const {$1} = React.useContext($2);"
+    ],
+    "description": ""
+  },
+  "React useRef": {
+    "prefix": "useRef",
+    "body": [
+      "const $1 = React.useRef($2);"
+    ],
+    "description": ""
+  },
+  "Import React": {
+    "prefix": "imr",
+    "body": [
+      "import * as React from 'react'"
+    ],
+    "description": ""
+  },
+  "React useState": {
+    "prefix": "useState",
+    "body": [
+      "const [${1}, set${2}] = React.useState(${3});${0}"
+    ],
+    "description": ""
+  },
+  "MUI TypeScript Functional Component": {
+    "prefix": "muifc",
+    "body": [
+      "import * as React from 'react'",
+      "import PropTypes from 'prop-types'",
+      "import classnames from 'clsx'",
+      "import withStyles from '@material-ui/core/styles/withStyles'",
+      "",
+      "interface Props {}",
+      "interface Ref {}",
+      "",
+      "export const styles = () => ({",
+      "\troot: {}",
+      "})",
+      "",
+      "const ${1:Component} = React.forwardRef<Ref, Props>(function ${1:Component}(props, ref) {",
+      "\tconst { classes,...other } = props",
+      "\treturn (",
+      "\t\t<${2:Component}",
+      "\t\t\tclassName={classnames(classes.root)}",
+      "\t\t\tref={ref}",
+      "\t\t\t{...other}",
+      "\t\t>",
+      "            ${3:Component}",
+      "\t\t</${2:Component}>",
+      "\t);",
+      "})",
+      "",
+      "export default ${1:Component};"
+    ],
+    "description": ""
+  }
+}
+
